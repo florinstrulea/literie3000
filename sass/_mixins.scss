@@ -1,0 +1,23 @@
+@use "variables" as v;
+
+@mixin container {
+	margin: 0 auto;
+	max-width: 70%;
+	display: flex;
+}
+@mixin figcaption {
+	padding: 0 1rem;
+	background-color: v.$caption;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	//position: absolute;
+	&--par {
+		color: v.$white;
+		font-size: 2rem;
+	}
+	&--img {
+		width: 3.5rem;
+		transform: rotateZ(45deg);
+	}
+}
