@@ -24,7 +24,7 @@ $datas = $query->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="prices col-md-3">
                 <p><?= $data["prix"] ?> €</p>
-                <p><?= ($data["prix_discount"] = "") ? "" : $data["prix_discount"] . "€" ?> </p>
+                <p><?= ($data["prix_discount"] == 0) ? "" : $data["prix_discount"] . "€" ?> </p>
             </div>
         </div>
     <?php

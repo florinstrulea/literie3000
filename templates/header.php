@@ -13,7 +13,7 @@
     <title>Literie 3000</title>
 </head>
 
-<body>d-f
+<body>
     <div class="logo d-flex justify-content-center">
         <img src="img/logo.png" alt="">
     </div>
