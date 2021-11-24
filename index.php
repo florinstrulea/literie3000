@@ -1,27 +1,38 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
+include("templates/header.php");
+$dsn = "mysql:host=localhost;dbname=literie3000";
+$db = new PDO($dsn, "root");
+$query = $db->query("SELECT * FROM brands INNER JOIN matelas on brands.idbrands=matelas.id_brands INNER JOIN sizes on matelas.id_sizes=sizes.idsizes");
+$datas = $query->fetchAll(PDO::FETCH_ASSOC);
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Literie 3000</title>
-</head>
+?>
 
-<body>
-    <div class="logo">
-        <img src="img/logo.png" alt="">
-    </div>
-    <div class="container">
-        <div class="catalog ">
-            <h1 class="catalog__title">CATALOGUE</h1>
+<div class="container">
+    <h1 class="catalog__title title text-center">CATALOGUE</h1>
+    <?php
+    foreach ($datas as $data) {
+    ?>
+        <div class="row">
+            <div class="image col-md-3"><a href="matelas.php?id=<?= $data["id"] ?>"><img src="img/matelas/<?= $data["image"] ?>" alt=""></a></div>
+            <div class="brand col-md-3">
+                <p><?= $data["brands"] ?></p>
+            </div>
+            <div class="matress col-md-3">
+                <p>Matelas</p>
+                <?= $data["name"] ?>
+                <p><?= $data["type"] ?></p>
+            </div>
+            <div class="prices col-md-3">
+                <p><?= $data["prix"] ?> €</p>
+                <p><?= ($data["prix_discount"] = "") ? "" : $data["prix_discount"] . "€" ?> </p>
+            </div>
         </div>
+    <?php
+    } ?>
+    <div class="buttons">
+        <a href="add_matelas.php">Ajouter un matelas</a>
     </div>
+</div>
 
 </body>
 

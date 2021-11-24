@@ -42,3 +42,6 @@ values
 ("Grange","2","1", "809", "709.00", "https://www.outletsofadirect.fr/11181-large_default/matelas-privilege-en-mousse-%C3%A0-m%C3%A9moire-de-forme-haut-de-gamme-30-cm-naturalex.jpg"),
 ("Ratatouille","3","2","759", "529","https://img.grouponcdn.com/deal/xFVvkJMxK4yo6ps7ppEsN3LcGec/xF-960x576/v1/t600x362.jpg"),
 ("Directeur", "1","3", "1019", "509.00", "https://www.lematelas365.com/modules/ps_imageslider/images/b99606b84fc3ed11f46c8a0831154caf8a675092_04df189495b745d5b0f9ad9545c9279b4f93fd74_MATELAS-new-hp.jpg")
+
+
+SELECT * FROM brands INNER JOIN matelas on brands.id=matelas.id_brands INNER JOIN sizes on matelas.id_sizes=sizes.id
