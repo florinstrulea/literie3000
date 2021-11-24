@@ -34,7 +34,15 @@ if (isset($_GET["id"])) {
     $query->bindParam(":id", $_GET["id"]);
     $query->execute();
     $datas = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    // if ($_POST["delete"] == "delete") {
+    //     $query = $db->prepare("DELETE FROM matelas where id like :id");
+    //     $query->bindParam(":id", $_GET["id"]);
+    //     $query->execute();
+    //     header("Location: ./index.php");
+    // }
     if (!empty($_POST)) {
+        var_dump($_POST);
         foreach ($_POST as $key => $value) {
             $data[$key] = trim(strip_tags($value));
         }
@@ -51,9 +59,7 @@ if (isset($_GET["id"])) {
         if (empty($data["prix"])) {
             $errors["prix"] = "Le prix du matelas est obligatoire";
         }
-        // if (empty($data["image"])) {
-        //     $errors["image"] = "L'image du matelas est obligatoire";
-        // }
+
         if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
             //verifier qu'un fichier a bien ete uploadé via le champ file et que l'upload s'est bien passée
 
@@ -147,6 +153,8 @@ if (isset($_GET["id"])) {
         </div>
     <?php
     } ?>
+    <div><a href="delete.php">Effacer le matelas </a></div>
+
 
 </div>
 <h2 class="title text-center">Modifier le matelas</h2>
@@ -240,5 +248,8 @@ if (isset($_GET["id"])) {
         <input type="submit" value="Envoyer">
 
     </form>
+
+
+
 
 </div>
