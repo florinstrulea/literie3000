@@ -14,6 +14,14 @@
 </head>
 
 <body>
+    <div class="logo">
+        <img src="img/logo.png" alt="">
+    </div>
+    <div class="container">
+        <div class="catalog ">
+            <h1 class="catalog__title">CATALOGUE</h1>
+        </div>
+    </div>
 
 </body>
 
